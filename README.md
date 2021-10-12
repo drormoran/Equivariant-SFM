@@ -1,6 +1,6 @@
 # Deep Permutation Equivariant Structure from Motion <br>
 
-### [Paper](https://arxiv.org/abs/2104.06703) | [Poster](https://github.com/drormoran/GNN-for-SFM/blob/iccv/media/ICCV_Slide.pdf)
+### [Paper](https://arxiv.org/abs/2104.06703) | [Poster](/media/ICCV_Slide.pdf)
 <p align="center">
   <img width="100%" src="media/four_optimization_results.gif"/>
 </p>
