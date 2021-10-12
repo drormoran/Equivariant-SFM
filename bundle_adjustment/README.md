@@ -2,7 +2,7 @@
 
 
 ## Conda envorinment
-Use the <a href="https://github.com/drormoran/GNN-for-SFM"> ESFM</a> environment.
+Use the <a href="https://github.com/drormoran/Equivariant-SFM/blob/main/environment.yml"> ESFM</a> environment.
 ```
 conda activate ESFM
 export PYBIND11_PYTHON_VERSION="3.8"
