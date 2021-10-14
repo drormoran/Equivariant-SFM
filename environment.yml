@@ -244,4 +244,3 @@ dependencies:
   - zipp=3.6.0=pyhd8ed1ab_0
   - zlib=1.2.11=h36c2ea0_1013
   - zstd=1.5.0=ha95c52a_0
-prefix: /home/projects/ronen/drorm/.conda/envs/ESFM
