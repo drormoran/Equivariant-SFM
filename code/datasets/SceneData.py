@@ -178,7 +178,7 @@ def get_subset(data, subset_size):
     print("Cameras are:")
     print(indices)
 
-    indices = torch.tensor(indices)
+    indices = torch.sort(torch.tensor(indices))[0]
     M_indices = torch.sort(torch.cat((2 * indices, 2 * indices + 1)))[0]
     y, Ns = data.y[indices], data.Ns[indices]
     M = data.M[M_indices]
