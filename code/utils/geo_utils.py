@@ -527,6 +527,7 @@ def xs_valid_points(xs):
 
 
 def normalize_M(M, Ns, valid_points=None):
+    # from pixel coordinates to camera coordinates using inv calibration or normalization matrix
     if valid_points is None:
         valid_points = dataset_utils.get_M_valid_points(M)
     norm_M = M.clone()

@@ -4,11 +4,11 @@ import torch
 class SparseMat:
     def __init__(self, values, indices, cam_per_pts, pts_per_cam, shape):
         assert len(shape) == 3
-        self.values = values
-        self.indices = indices
-        self.shape = shape
-        self.cam_per_pts = cam_per_pts
-        self.pts_per_cam = pts_per_cam
+        self.values = values  # [all_points_anywhere, 2], 2 for (x, y) within any image
+        self.indices = indices  # [2, all_points_anywhere], 2 for (camera_ind, track_ind)
+        self.shape = shape  # shape of a sparse matrix, (num_cameras, num_tracks)
+        self.cam_per_pts = cam_per_pts  # [n_pts, 1]
+        self.pts_per_cam = pts_per_cam  # [n_cams, 1]
         self.device = self.values.device
 
     @property

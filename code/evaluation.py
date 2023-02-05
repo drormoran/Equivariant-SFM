@@ -1,7 +1,13 @@
 import torch
 import os
-from utils import geo_utils, ba_functions
+from utils import geo_utils
 import numpy as np
+
+BA_ERROR = None
+try:
+    from utils import ba_functions
+except ModuleNotFoundError as e:
+    BA_ERROR = e
 
 
 def prepare_predictions(data, pred_cam, conf, bundle_adjustment):
@@ -45,6 +51,8 @@ def prepare_predictions(data, pred_cam, conf, bundle_adjustment):
         outputs['pts3D_triangulated_fixed'] = (similarity_mat @ pts3D_triangulated)
 
         if bundle_adjustment:
+            if BA_ERROR is not None:
+                raise BA_ERROR
             repeat = conf.get_bool('ba.repeat')
             triangulation = conf.get_bool('ba.triangulation')
             ba_res = ba_functions.euc_ba(xs, Rs=Rs_pred, ts=ts_pred, Ks=np.linalg.inv(Ns),

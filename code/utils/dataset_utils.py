@@ -66,7 +66,7 @@ def get_M_valid_points(M):
 
     if type(M) is torch.Tensor:
         M_valid_pts = torch.abs(M.reshape(-1, 2, n_pts)).sum(dim=1) != 0
-        M_valid_pts[:, M_valid_pts.sum(dim=0) < 2] = False
+        M_valid_pts[:, M_valid_pts.sum(dim=0) < 2] = False  # mask out point tracks that contain only 1 point
     else:
         M_valid_pts = np.abs(M.reshape(-1, 2, n_pts)).sum(axis=1) != 0
         M_valid_pts[:, M_valid_pts.sum(axis=0) < 2] = False
@@ -80,9 +80,9 @@ def M2sparse(M, normalize=False, Ns=None):
 
     # Get indices
     valid_pts = get_M_valid_points(M)
-    cam_per_pts = valid_pts.sum(dim=0).unsqueeze(1)
-    pts_per_cam = valid_pts.sum(dim=1).unsqueeze(1)
-    mat_indices = torch.nonzero(valid_pts).T
+    cam_per_pts = valid_pts.sum(dim=0).unsqueeze(1)  # [n_pts, 1]
+    pts_per_cam = valid_pts.sum(dim=1).unsqueeze(1)  # [n_cams, 1]
+    mat_indices = torch.nonzero(valid_pts).T  # [2, the number of points in the scene]
 
     # Get Values
     # reshaped_M = M.reshape(n_cams, 2, n_pts).transpose(1, 2)  # [2m, n] -> [m, 2, n] -> [m, n, 2]

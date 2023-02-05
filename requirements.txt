@@ -1,0 +1,12 @@
+opencv-python
+torch
+torchvision
+torchaudio
+cvxpy
+pyhocon
+pandas
+portalocker
+plotly
+matplotlib
+dask
+pytorch3d

@@ -51,7 +51,7 @@ class SetOfSetLayer(Module):
 
     def forward(self, x):
         # x is [m,n,d] sparse matrix
-        out_all = self.lin_all(x.values)  # [nnz,d_in] -> [nnz,d_out]
+        out_all = self.lin_all(x.values)  # [all_points_everywhere, d_in] -> [all_points_everywhere, d_out]
 
         mean_rows = x.mean(dim=0) # [m,n,d_in] -> [n,d_in]
         out_rows = self.lin_n(mean_rows)  # [n,d_in] -> [n,d_out]

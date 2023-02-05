@@ -2,6 +2,7 @@ import torch
 from torch import nn
 from models.baseNet import BaseNet
 from models.layers import *
+from utils.sparse_utils import SparseMat
 
 
 class SetOfSetBlock(nn.Module):
@@ -55,7 +56,7 @@ class SetOfSetNet(BaseNet):
         self.m_net = get_linear_layers([num_feats] * 2 + [m_d_out], final_layer=True, batchnorm=False)
         self.n_net = get_linear_layers([num_feats] * 2 + [n_d_out], final_layer=True, batchnorm=False)
 
-    def forward(self, data):
+    def forward(self, data: SparseMat):
         x = data.x  # x is [m,n,d] sparse matrix
         x = self.embed(x)
         for eq_block in self.equivariant_blocks:
