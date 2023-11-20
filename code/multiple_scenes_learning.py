@@ -19,7 +19,7 @@ def main():
     batch_size = conf.get_int('dataset.batch_size')
     optimization_num_of_epochs = conf.get_int("train.optimization_num_of_epochs")
     optimization_eval_intervals = conf.get_int('train.optimization_eval_intervals')
-    optimization_lr = conf.get_int('train.optimization_lr')
+    optimization_lr = conf.get_float('train.optimization_lr')
 
     # Create train, test and validation sets
     test_scenes = SceneData.create_scene_data_from_list(conf.get_list('dataset.test_set'), conf)
